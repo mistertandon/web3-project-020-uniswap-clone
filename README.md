@@ -9,3 +9,5 @@ $ npx create-next-app .
 √ What import alias would you like configured? ... @/*
 
 
+#### Roboto Fonts 
+[Link](https://fonts.google.com/specimen/Roboto) to get font files
