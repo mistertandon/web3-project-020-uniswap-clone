@@ -1,5 +1,7 @@
 ## Uniswap clone
 
+[Figma](https://www.figma.com/file/efCWSSfWDL3WIndUHv42d6/Car-Assistant-Dashboard-(Community)?node-id=0-1&t=tGIF5ow7ZYv8TJFD-0) link for car dashboard
+
 $ npx create-next-app .
 √ Would you like to use TypeScript with this project? ... No / Yes [No]
 √ Would you like to use ESLint with this project? ... No / Yes [No]
