@@ -16,7 +16,7 @@ const NavBar = () => {
   const [openTokenBox, setOpenTokenBox] = useState(false);
 
   return (
-    <section className="grid w-11/12 h-20 grid-cols-3 mx-auto mt-4">
+    <section className="grid w-11/12 h-20 grid-cols-2 mx-auto mt-4 md:grid-cols-3">
       <div className="flex flex-row items-start pt-1 h-13 w-fit gap-x-4">
         <Image
           src={images.uniswap}
@@ -26,7 +26,7 @@ const NavBar = () => {
           width={50}
         />
 
-        <div className="flex flex-row gap-x-2 justify-evenly">
+        <div className="flex-row hidden md:flex gap-x-2 justify-evenly">
           {menuItems.map(({ name, link }, idx) => {
             return (
               <Link
@@ -40,7 +40,7 @@ const NavBar = () => {
           })}
         </div>
       </div>
-      <div className="bg-[#1e1e1e] flex flex-row justify-center items-center h-10 gap-x-2 w-fit border-white rounded-2xl">
+      <div className="hidden md:flex bg-[#1e1e1e] flex-row justify-center items-center h-10 gap-x-2 w-fit border-white rounded-2xl">
         <Image
           src={images.search}
           alt="search"
@@ -52,8 +52,8 @@ const NavBar = () => {
           placeholder="Search Token"
         />
       </div>
-      <div className="flex flex-row items-start justify-between h-13 w-fit gap-x-4">
-        <div className="flex flex-row items-start gap-x-2">
+      <div className="flex flex-row items-start flex-end md:justify-between h-13 w-fit gap-x-4">
+        <div className="flex-row items-start hidden md:flex gap-x-2">
           <Image
             src={images.ether}
             alt="network"
@@ -64,7 +64,8 @@ const NavBar = () => {
         </div>
         <div className="pt-1">
           <button onClick={() => {}}>Address</button>
-          {openModal && (
+          {true && (
+          // {openModal && (
             <Modal
               setOpenModal={setOpenModal}
               connectWallet="Connect"
