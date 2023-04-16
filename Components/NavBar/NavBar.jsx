@@ -63,9 +63,9 @@ const NavBar = () => {
           <p className="pt-1 m-0">Network Name</p>
         </div>
         <div className="pt-1">
-          <button onClick={() => {}}>Address</button>
-          {true && (
-          // {openModal && (
+          <button onClick={() => setOpenModal(true)}>Address</button>
+          {/* {true && ( */}
+          {openModal && (
             <Modal
               setOpenModal={setOpenModal}
               connectWallet="Connect"
