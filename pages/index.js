@@ -1,7 +1,15 @@
 import React from "react";
+import { HeroSection } from "./../Components";
 
 const Home = () => {
-  return <>Hello from HOME</>;
+  return (
+    <>
+      <HeroSection
+        accounts="hey"
+        tokenData="data"
+      />
+    </>
+  );
 };
 
 export default Home;
