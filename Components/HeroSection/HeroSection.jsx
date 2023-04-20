@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Image from "next/image";
 import images from "./../../assets";
-import { SearchToken } from "./../index";
+import { SearchToken, Token } from "./../index";
 
 const HeroSection = ({ accounts, tokenData }) => {
   const [openSetting, setOpenSetting] = useState(false);
   const [openToken, setOpenToken] = useState(false);
-  const [openTokensTwo, setTokensTwo] = useState(false);
+  const [openTokensTwo, setOpenTokensTwo] = useState(false);
 
   const [tokenOne, setTokenOne] = useState({ name: "", image: "" });
   const [tokenTwo, setTokenTwo] = useState({ name: "", image: "" });
@@ -14,16 +14,17 @@ const HeroSection = ({ accounts, tokenData }) => {
     <section className="grid grid-cols-12">
       <div className="col-start-4 col-end-7">Swap</div>
       {/* Token One */}
-      <div className="col-start-7 col-end-8">
+      <div className="col-start-7 col-end-9">
         <Image
           src={images.close}
           alt="Image"
           width={50}
           height={50}
-          onClick={() => setOpenSetting(false)}
+className="cursor-pointer"
+          onClick={() => setOpenSetting(true)}
         />
       </div>
-      <div className="col-start-4 col-end-8">
+      <div className="col-start-4 col-end-9">
         <input
           type="text"
           placeholder="0"
@@ -40,7 +41,7 @@ const HeroSection = ({ accounts, tokenData }) => {
         </button>
       </div>
       {/* Token Two */}
-      <div className="col-start-4 col-end-8">
+      <div className="col-start-4 col-end-9">
         <input
           type="text"
           placeholder="0"
@@ -52,19 +53,20 @@ const HeroSection = ({ accounts, tokenData }) => {
             width={20}
             height={20}
           />
+          {tokenTwo.name || "ETH"}
+          <small>336k</small>
         </button>
-        {tokenTwo.name || "ETH"}
-        <small>336k</small>
       </div>
       {/* Account */}
-      <div className="col-start-4 col-end-8">
+      <div className="col-start-4 col-end-9">
         {accounts ? (
           <button onClick={() => {}}>Connect wallet</button>
         ) : (
-          <button onClick={() => {}}>Swap</button>
+          <button onClick={() => {}}>-</button>
         )}
       </div>
-      <div>
+      <div className="col-span-full">
+        {openSetting && <Token setOpenSetting={setOpenSetting}/>}
         {openToken && (
           <SearchToken
             openToken={setOpenToken}
@@ -74,7 +76,7 @@ const HeroSection = ({ accounts, tokenData }) => {
         )}
         {openToken && (
           <SearchToken
-            openToken={setOpenToken}
+            openToken={setOpenTokensTwo}
             tokens={setTokenTwo}
             tokenData={tokenData}
           />
