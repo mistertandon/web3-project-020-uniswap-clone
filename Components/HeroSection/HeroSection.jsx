@@ -4,7 +4,9 @@ import images from "./../../assets";
 import { SearchToken, Token } from "./../index";
 
 const HeroSection = ({ accounts, tokenData }) => {
+
   const [openSetting, setOpenSetting] = useState(false);
+
   const [openToken, setOpenToken] = useState(false);
   const [openTokensTwo, setOpenTokensTwo] = useState(false);
 
@@ -20,7 +22,7 @@ const HeroSection = ({ accounts, tokenData }) => {
           alt="Image"
           width={50}
           height={50}
-className="cursor-pointer"
+          className="cursor-pointer"
           onClick={() => setOpenSetting(true)}
         />
       </div>
@@ -29,7 +31,7 @@ className="cursor-pointer"
           type="text"
           placeholder="0"
         />
-        <button>
+        <button onClick={() => setOpenToken(true)}>
           <Image
             src={tokenOne.image || images.etherlogo}
             height={20}
@@ -66,7 +68,7 @@ className="cursor-pointer"
         )}
       </div>
       <div className="col-span-full">
-        {openSetting && <Token setOpenSetting={setOpenSetting}/>}
+        {openSetting && <Token setOpenSetting={setOpenSetting} />}
         {openToken && (
           <SearchToken
             openToken={setOpenToken}
@@ -74,7 +76,7 @@ className="cursor-pointer"
             tokenData={tokenData}
           />
         )}
-        {openToken && (
+        {openTokensTwo && (
           <SearchToken
             openToken={setOpenTokensTwo}
             tokens={setTokenTwo}
