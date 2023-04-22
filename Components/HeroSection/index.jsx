@@ -1,2 +1,15 @@
 import HeroSection from "./HeroSection";
-export default HeroSection;
+import {
+  TOGGLE_SWAP_COMPONENT,
+  TOGGLE_TOKEN_COMPONENT,
+  TOGGLE_SEARCH_TOKEN_A,
+  TOGGLE_SEARCH_TOKEN_B,
+} from "./HeroSection.constant";
+
+export {
+  HeroSection,
+  TOGGLE_SWAP_COMPONENT,
+  TOGGLE_TOKEN_COMPONENT,
+  TOGGLE_SEARCH_TOKEN_A,
+  TOGGLE_SEARCH_TOKEN_B,
+};

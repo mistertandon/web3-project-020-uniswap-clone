@@ -1,7 +1,8 @@
 import Image from "next/image";
 import images from "./../../assets";
+import { TOGGLE_SWAP_COMPONENT } from "./../index";
 
-const Token = ({ setOpenSetting }) => {
+const Token = ({ dispatch }) => {
   return (
     <section className="grid grid-flow-row grid-cols-12 col-span-full">
       <div className="col-start-4 col-end-7">Title</div>
@@ -12,7 +13,8 @@ const Token = ({ setOpenSetting }) => {
           width={50}
           height={50}
           className="cursor-pointer"
-          onClick={() => setOpenSetting(false)}
+          // onClick={() => setOpenSetting(false)}
+          onClick={() => dispatch(TOGGLE_SWAP_COMPONENT)}
         />
       </div>
       <div className="col-start-4 col-end-9">
