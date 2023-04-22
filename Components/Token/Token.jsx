@@ -1,6 +1,6 @@
 import Image from "next/image";
 import images from "./../../assets";
-import { TOGGLE_SWAP_COMPONENT } from "./../index";
+import { TOGGLE_SWAP_COMPONENT, Toggle } from "./../index";
 
 const Token = ({ dispatch }) => {
   return (
@@ -52,6 +52,11 @@ const Token = ({ dispatch }) => {
       <h2 className="col-start-4 col-end-9">Interface setting</h2>
       <div className="col-start-4 col-end-9">
         Transaction Deadline
+        <Toggle
+          parentWidth={50}
+          parentHeight={25}
+          toggleBtnBgColor="#1AFFFF"
+        />
         <button>Toggle</button>
       </div>
     </section>

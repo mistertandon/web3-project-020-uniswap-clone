@@ -29,6 +29,19 @@ module.exports = {
         secondary: "#8f9094",
       },
       fontSize: {
+        mini: [
+          "10px",
+          {
+            lineHeight: "1rem",
+          },
+        ],
+        mini_bold: [
+          "0.5rem",
+          {
+            lineHeight: "1rem",
+            fontWeight: 700,
+          },
+        ],
         xs_bold: [
           "0.75rem",
           {

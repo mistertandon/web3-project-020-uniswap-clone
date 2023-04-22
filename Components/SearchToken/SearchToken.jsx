@@ -30,8 +30,8 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
   ];
   return (
     <section className="grid grid-flow-row grid-cols-12 col-span-full">
-      <div className="col-start-4 col-end-8">Select a token</div>
-      <div className="col-start-8 col-end-10">
+      <div className="col-start-4 col-end-8 pl-2 justify-self-start">Select a token</div>
+      <div className="col-start-8 col-end-10 pr-2 justify-self-end">
         <Image
           src={images.close}
           alt="image"
@@ -41,7 +41,7 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
           onClick={() => dispatch(TOGGLE_SWAP_COMPONENT)}
         />
       </div>
-      <div className="col-start-4 col-end-10">
+      <div className="flex flex-row items-center justify-start col-start-4 col-end-10 pl-2 gap-x-2">
         <Image
           src={images.search}
           alt="search"
@@ -52,6 +52,7 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
         <input
           type="text"
           placeholder="Search name or pass Token address"
+          className="bg-transparent border-none outline-none color-white"
         />
       </div>
       <div className="grid grid-cols-12 col-start-4 col-end-10 gap-2 col-span-full">
