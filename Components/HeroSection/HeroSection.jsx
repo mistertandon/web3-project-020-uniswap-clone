@@ -52,7 +52,6 @@ const componentVisibility = (state, action) => {
 };
 
 const HeroSection = ({ accounts, tokenData }) => {
-
   const [visibilityStatus, dispatch] = useReducer(componentVisibility, {
     swapComponent: true,
     TokenComponent: false,
@@ -124,22 +123,20 @@ const HeroSection = ({ accounts, tokenData }) => {
         </>
       )}
       {visibilityStatus["TokenComponent"] && <Token dispatch={dispatch} />}
-      <div className="col-span-full">
-        {visibilityStatus["tokenAComponent"] && (
-          <SearchToken
-            tokens={setTokenOne}
-            tokenData={tokenData}
-            dispatch={dispatch}
-          />
-        )}
-        {visibilityStatus["tokenBComponent"] && (
-          <SearchToken
-            tokens={setTokenTwo}
-            tokenData={tokenData}
-            dispatch={dispatch}
-          />
-        )}
-      </div>
+      {visibilityStatus["tokenAComponent"] && (
+        <SearchToken
+          tokens={setTokenOne}
+          tokenData={tokenData}
+          dispatch={dispatch}
+        />
+      )}
+      {visibilityStatus["tokenBComponent"] && (
+        <SearchToken
+          tokens={setTokenTwo}
+          tokenData={tokenData}
+          dispatch={dispatch}
+        />
+      )}
     </section>
   );
 };

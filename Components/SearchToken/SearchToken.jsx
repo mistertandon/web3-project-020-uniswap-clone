@@ -29,7 +29,7 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
     },
   ];
   return (
-    <section className="grid-flow-row grid-cols-12 col-span-full">
+    <section className="grid grid-flow-row grid-cols-12 col-span-full">
       <div className="col-start-4 col-end-8">Select a token</div>
       <div className="col-start-8 col-end-10">
         <Image
@@ -60,9 +60,9 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
           return (
             <div
               key={uidRef}
-              className="col-span-4 row-span-1"
+              className="flex flex-row items-center col-span-3 row-span-1 pt-2 border-2 justify-evenly border-[#ffffff] rounded-md"
             >
-              <p>{name}</p>
+              <p className="p-0 m-0">{name}</p>
               <Image
                 src={tokenImage || images.ether}
                 width={30}
