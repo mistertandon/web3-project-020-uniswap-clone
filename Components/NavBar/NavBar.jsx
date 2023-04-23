@@ -14,6 +14,7 @@ const NavBar = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const [openTokenBox, setOpenTokenBox] = useState(false);
+  const [account, setAccount] = useState(true);
 
   const [tokenModalCoordinates, setTokenModalCoordinates] = useState({
     parentCHeight: null,
@@ -44,6 +45,7 @@ const NavBar = () => {
 
     setOpenTokenBox(true);
   };
+
   return (
     <section className="grid w-11/12 h-20 grid-cols-2 mx-auto mt-4 md:grid-cols-3">
       <div className="flex flex-row items-start pt-1 h-13 w-fit gap-x-4">
@@ -92,15 +94,18 @@ const NavBar = () => {
           <p className="pt-1 m-0">Network Name</p>
         </div>
         <div className="pt-1">
-          {/* <button onClick={() => setOpenModal(true)}>Address</button> */}
-          <button
-            onClick={(event) => {
-              addressClickHandler(event);
-            }}
-          >
-            Address
-          </button>
-          {/* {true && ( */}
+          {account && (
+            <button
+              onClick={(event) => {
+                addressClickHandler(event);
+              }}
+            >
+              Address
+            </button>
+          )}
+          {!account && (
+            <button onClick={() => setOpenModal(true)}>Address</button>
+          )}
           {openModal && (
             <Modal
               setOpenModal={setOpenModal}
@@ -108,8 +113,6 @@ const NavBar = () => {
             />
           )}
         </div>
-        {/* TokenList component */}
-        {/* {true && ( */}
         {openTokenBox && (
           <TokenList
             tokenDate="hey"

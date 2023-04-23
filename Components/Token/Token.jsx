@@ -57,7 +57,6 @@ const Token = ({ dispatch }) => {
           parentHeight={25}
           toggleBtnBgColor="#1AFFFF"
         />
-        <button>Toggle</button>
       </div>
     </section>
   );

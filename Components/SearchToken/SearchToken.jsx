@@ -8,7 +8,7 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
   const [activeToken, setActiveToken] = useState(null);
   const COINS = [
     {
-      name: "ETH",
+      name: "BTC",
       image: images.ether,
     },
     {
@@ -16,21 +16,23 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
       image: images.ether,
     },
     {
-      name: "ETH",
+      name: "XRP",
       image: images.ether,
     },
     {
-      name: "ETH",
+      name: "ADA",
       image: images.ether,
     },
     {
-      name: "ETH",
+      name: "DOGE",
       image: images.ether,
     },
   ];
   return (
     <section className="grid grid-flow-row grid-cols-12 col-span-full">
-      <div className="col-start-4 col-end-8 pl-2 justify-self-start">Select a token</div>
+      <div className="col-start-4 col-end-8 pl-2 justify-self-start">
+        Select a token
+      </div>
       <div className="col-start-8 col-end-10 pr-2 justify-self-end">
         <Image
           src={images.close}
@@ -63,7 +65,12 @@ const SearchToken = ({ tokens, tokenData, dispatch }) => {
               key={uidRef}
               className="flex flex-row items-center col-span-3 row-span-1 pt-2 border-2 justify-evenly border-[#ffffff] rounded-md"
             >
-              <p className="p-0 m-0">{name}</p>
+              <p
+                className="p-0 m-0"
+                onClick={() => tokens({ name, image: tokenImage })}
+              >
+                {name}
+              </p>
               <Image
                 src={tokenImage || images.ether}
                 width={30}

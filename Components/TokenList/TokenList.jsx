@@ -1,3 +1,4 @@
+import { useId } from "react";
 import Image from "next/image";
 import images from "./../../assets";
 import { TokenListPortal } from "./index";
@@ -34,36 +35,23 @@ const TokenList = ({
                 onClick={() => setOpenTokenBox(false)}
               />
             </div>
-            {/* <div className="col-span-12"> */}
             <div className="grid items-center grid-cols-12 col-span-12 gap-2">
-              {data.map((property, idx) => (
-                <>
-                  {/* <div className="grid grid-cols-12 col-span-12 gap-2 pb-2 mt-2 border-0 border-b-2 border-solid"> */}
+              {data.map((property, idx) => {
+                const keyId = useId();
+                return (
                   <div
-                    className="col-span-3 font-bold bg-[#C7C7C7] text-base rounded-lg px-2 py-1"
-                    key={`symbol_${idx}`}
+                    className="flex flex-row flex-wrap items-center col-span-full gap-x-1"
+                    key={`${keyId}`}
                   >
-                    Symb
+                    <div className="flex-1 font-bold bg-[#C7C7C7] text-base rounded-lg px-2 py-1">
+                      Symb
+                    </div>
+                    <div className="flex-1">Qty</div>
+                    <div className="flex-1">Name</div>
+                    <div className="w-full mt-2 border-0 border-b-2 border-solid"></div>
                   </div>
-                  <div
-                    className="col-span-4"
-                    key={`qty_${idx}`}
-                  >
-                    Qty
-                  </div>
-                  <div
-                    className="col-span-5"
-                    key={`name_${idx}`}
-                  >
-                    Name
-                  </div>
-                  <div
-                    className="border-0 border-b-2 border-solid col-span-full"
-                    key={`divider_${idx}`}
-                  ></div>
-                </>
-                // </div>
-              ))}
+                );
+              })}
             </div>
           </section>
         </TokenListPortal>
