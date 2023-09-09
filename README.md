@@ -16,3 +16,46 @@ $ npx create-next-app .
 #### Roboto Fonts
 
 [Link](https://fonts.google.com/specimen/Roboto) to get font files
+
+
+$ npx hardhat
+Need to install the following packages:
+  hardhat
+Ok to proceed? (y) y
+888    888                      888 888               888
+888    888                      888 888               888   
+888    888                      888 888               888   
+8888888888  8888b.  888d888 .d88888 88888b.   8888b.  888888
+888    888     "88b 888P"  d88" 888 888 "88b     "88b 888   
+888    888 .d888888 888    888  888 888  888 .d888888 888   
+888    888 888  888 888    Y88b 888 888  888 888  888 Y88b. 
+888    888 "Y888888 888     "Y88888 888  888 "Y888888  "Y888
+
+Welcome to Hardhat v2.14.0
+
+√ What do you want to do? · Create a JavaScript project
+√ Hardhat project root: · D:\web3\synced\web3-project-020-uniswap-clone
+√ Do you want to add a .gitignore? (Y/n) · y
+
+You need to install these dependencies to run the sample project:
+npm install --save-dev "hardhat@^2.14.0" "@nomicfoundation/hardhat-toolbox@^2.0.0"
+
+
+# Sample Hardhat Project
+
+This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+
+Try running some of the following tasks:
+
+```shell
+npx hardhat help
+npx hardhat test
+REPORT_GAS=true npx hardhat test
+npx hardhat node
+npx hardhat run scripts/deploy.js
+```
+
+npm i @uniswap/v3-periphery
+npm i @openzeppelin/contracts
+npm i ether
+npm in web3modal
