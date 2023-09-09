@@ -100,7 +100,7 @@ const NavBar = () => {
                 addressClickHandler(event);
               }}
             >
-              Address
+              0x18d7efc9d5...
             </button>
           )}
           {!account && (
