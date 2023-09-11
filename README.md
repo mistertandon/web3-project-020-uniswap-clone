@@ -59,3 +59,4 @@ npm i @uniswap/v3-periphery
 npm i @openzeppelin/contracts
 npm i ether
 npm in web3modal
+npm i hardhat-tracer
