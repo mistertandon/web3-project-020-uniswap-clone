@@ -64,3 +64,6 @@ npm i hardhat-tracer
  > npx hardhat clean
  > npx hardhat compile
  > npx hardhat test --trace
+
+ > npx hardhat node
+ > npx hardhat run scripts/deploy.js --network localhost

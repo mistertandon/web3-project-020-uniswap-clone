@@ -1,21 +1,39 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  // Deployment: BooToken
+  const BooToken = await hre.ethers.getContractFactory("BooToken");
+  const booToken = await BooToken.deploy();
 
-  const lockedAmount = hre.ethers.utils.parseEther("0.001");
+  await booToken.deployed();
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  console.log(`BooToken Token deployed to ${booToken.address}`);
 
-  await lock.deployed();
+  // Deployment: ERC20Life
+  const ERC20Life = await hre.ethers.getContractFactory("ERC20Life");
+  const erc20Life = await ERC20Life.deploy();
 
-  console.log(
-    `Lock with ${ethers.utils.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
+  await erc20Life.deployed();
+
+  console.log(`ERC20Life Token deployed to ${erc20Life.address}`);
+
+  // Deployment: SingleSwapToken
+  const SingleSwapToken = await hre.ethers.getContractFactory(
+    "SingleSwapToken"
   );
+  const singleSwapToken = await SingleSwapToken.deploy();
+
+  await singleSwapToken.deployed();
+
+  console.log(`SingleSwapToken Token deployed to ${singleSwapToken.address}`);
+
+  // Deployment: SwapMultiHop
+  const SwapMultiHop = await hre.ethers.getContractFactory("SwapMultiHop");
+  const swapMultiHop = await SwapMultiHop.deploy();
+
+  await swapMultiHop.deployed();
+
+  console.log(`SwapMultiHop Token deployed to ${swapMultiHop.address}`);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
