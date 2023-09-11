@@ -60,3 +60,7 @@ npm i @openzeppelin/contracts
 npm i ether
 npm in web3modal
 npm i hardhat-tracer
+
+ > npx hardhat clean
+ > npx hardhat compile
+ > npx hardhat test --trace
