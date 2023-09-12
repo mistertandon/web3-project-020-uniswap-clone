@@ -127,7 +127,7 @@ export const connectingWithSingleSwapToken = async () => {
  * @param {} signerOrProvider
  * @returns
  */
-export const fetcSwapMultiHopTokenContract = (signerOrProvider) =>
+export const fetchSwapMultiHopTokenContract = (signerOrProvider) =>
   new ethers.Contract(SwapMultiHopAddress, SwapMultiHopABI, signerOrProvider);
 
 // Connect with SwapMultiHop Token contract
@@ -137,7 +137,7 @@ export const connectingWithSwapMultiHopToken = async () => {
     const connection = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
-    const contract = fetcSwapMultiHopTokenContract(signer);
+    const contract = fetchSwapMultiHopTokenContract(signer);
 
     return contract;
   } catch (error) {
@@ -151,7 +151,7 @@ export const connectingWithSwapMultiHopToken = async () => {
  * @param {} signerOrProvider
  * @returns
  */
-export const fetcIWETHTokenContract = (signerOrProvider) =>
+export const fetchIWETHTokenContract = (signerOrProvider) =>
   new ethers.Contract(IWETHAddress, IWETHABI, signerOrProvider);
 
 // Connect with IWETH Token contract
@@ -161,7 +161,7 @@ export const connectingWithIWETHToken = async () => {
     const connection = await web3modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
-    const contract = connectingWithIWETHToken(signer);
+    const contract = fetchIWETHTokenContract(signer);
 
     return contract;
   } catch (error) {

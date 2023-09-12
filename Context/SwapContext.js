@@ -3,7 +3,7 @@ import { ethers, BigNumber } from "ethers";
 import Web3Modal from "web3modal";
 import { BooTokenAddress, LifeTokenAddress, IWETHAddress } from "./constants";
 
-import ERC20 from "./ERC20Life.json";
+import ERC20 from "./ERC20.json";
 import { IWETHABI } from "./constants";
 
 import {
@@ -26,10 +26,11 @@ const SwapTokenContextProvider = ({ children }) => {
   const [dai, setDai] = useState("");
   const [tokenData, setTokenData] = useState([]);
 
+  // const addToken = [BooTokenAddress, LifeTokenAddress, IWETHAddress];
   const addToken = [
-    BooTokenAddress.toString(),
-    LifeTokenAddress.toString(),
-    IWETHAddress.toString(),
+    "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
+    "0x1befe2d8417e22da2e0432560ef9b2ab68ab75ad",
+    "0x04f1A5b9BD82a5020C49975ceAd160E98d8B77Af",
   ];
 
   const fetchingData = async () => {
@@ -44,10 +45,28 @@ const SwapTokenContextProvider = ({ children }) => {
       console.log("connection", connection);
       console.log("ethers", ethers);
 
-      const provider = new ethers.BrowserProvider(connection);
+      const provider = new ethers.providers.Web3Provider(connection);
 
       const balance = await provider.getBalance(userAccount);
-      console.log(balance);
+      const convertedBigInt = BigNumber.from(balance).toString();
+      // console.log(balance);
+      const convertedEth = ethers.utils.formatEther(convertedBigInt);
+
+      setEther(convertedEth);
+      console.log(convertedEth);
+
+      addToken.map(async (token, idx) => {
+        const contract = new ethers.Contract(token, ERC20.abi, provider);
+        console.log("contract : ", contract);
+
+        const userBalance = await contract.balanceOf(userAccount);
+        const tokenLeft = BigNumber.from(userBalance).toString();
+        const convertokenBalance = ethers.utils.formatEther(tokenLeft);
+        console.log("userBalance : ", userBalance);
+        console.log("convertokenBalance : ", convertokenBalance);
+      });
+
+      // console.log(getBigInt(balance));
     } catch (error) {
       console.log("An error occured", error);
     }
