@@ -55,6 +55,7 @@ const SwapTokenContextProvider = ({ children }) => {
       setEther(convertedEth);
       console.log(convertedEth);
 
+      let tokensTemp = [];
       addToken.map(async (token, idx) => {
         const contract = new ethers.Contract(token, ERC20.abi, provider);
         console.log("contract : ", contract);
@@ -62,10 +63,20 @@ const SwapTokenContextProvider = ({ children }) => {
         const userBalance = await contract.balanceOf(userAccount);
         const tokenLeft = BigNumber.from(userBalance).toString();
         const convertokenBalance = ethers.utils.formatEther(tokenLeft);
+
+        const symbol = await contract.symbol();
+        const name = await contract.name();
+
+        tokensTemp.push({ symbol, name, balance: convertokenBalance });
+
         console.log("userBalance : ", userBalance);
         console.log("convertokenBalance : ", convertokenBalance);
+        console.log("symbol : ", symbol);
+        console.log("name : ", name);
       });
 
+      setTokenData(tokensTemp);
+      console.log("tokensTemp : ", tokensTemp);
       // console.log(getBigInt(balance));
     } catch (error) {
       console.log("An error occured", error);
