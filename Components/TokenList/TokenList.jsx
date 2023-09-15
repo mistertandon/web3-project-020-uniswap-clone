@@ -4,7 +4,7 @@ import images from "./../../assets";
 import { TokenListPortal } from "./index";
 
 const TokenList = ({
-  tokenDate,
+  tokenData,
   setOpenTokenBox,
   tokenModalCoordinates: {
     parentCHeight,
@@ -36,7 +36,9 @@ const TokenList = ({
               />
             </div>
             <div className="grid items-center grid-cols-12 col-span-12 gap-2">
-              {data.map((property, idx) => {
+              {/* symbol: 'Boo', name: 'LF', balance: */}
+              {/* : */}
+              {tokenData.map(({ symbol, name, balance }) => {
                 const keyId = useId();
                 return (
                   <div
@@ -44,10 +46,10 @@ const TokenList = ({
                     key={`${keyId}`}
                   >
                     <div className="flex-1 font-bold bg-[#C7C7C7] text-base rounded-lg px-2 py-1">
-                      Symb
+                      {symbol}
                     </div>
-                    <div className="flex-1">Qty</div>
-                    <div className="flex-1">Name</div>
+                    <div className="flex-1">{balance}</div>
+                    <div className="flex-1">{name}</div>
                     <div className="w-full mt-2 border-0 border-b-2 border-solid"></div>
                   </div>
                 );

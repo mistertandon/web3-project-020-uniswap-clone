@@ -58,7 +58,11 @@ const SwapTokenContextProvider = ({ children }) => {
       const convertedEth = ethers.utils.formatEther(convertedBigInt);
 
       setEther(convertedEth);
-      console.log(convertedEth);
+      console.log("convertedEth", convertedEth);
+
+      const network = await provider.getNetwork();
+      console.log("network", network);
+      setNetworkConnected(network.name);
 
       let tokensTemp = [];
       addToken.map(async (token, idx) => {
@@ -82,7 +86,23 @@ const SwapTokenContextProvider = ({ children }) => {
 
       setTokenData(tokensTemp);
       console.log("tokensTemp : ", tokensTemp);
-      // console.log(getBigInt(balance));
+
+      // DAI Balance
+      const daiContract = await connectingWithDaiToken();
+      const daiBalance = await daiContract.balanceOf(userAccount);
+      const daiToken = BigNumber.from(daiBalance).toString();
+      const convertedDaiTokenBalance = ethers.utils.formatEther(daiToken);
+      setDai(convertedDaiTokenBalance);
+
+      // WETH9 Balance
+      const weth9Contract = await connectingWithDaiToken();
+      const weth9Balance = await weth9Contract.balanceOf(userAccount);
+      const weth9Token = BigNumber.from(weth9Balance).toString();
+      const convertedweth9TokenBalance = ethers.utils.formatEther(weth9Token);
+      setWeth9(convertedweth9TokenBalance);
+
+      console.log("dai State : ", convertedDaiTokenBalance);
+      console.log("weth9 State : ", convertedweth9TokenBalance);
     } catch (error) {
       console.log("An error occured", error);
     }
@@ -93,7 +113,17 @@ const SwapTokenContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <SwapTokenContext.Provider value={{ tokenName: "Parvesh" }}>
+    <SwapTokenContext.Provider
+      value={{
+        tokenName: "Parvesh",
+        connectWallet,
+        account,
+        networkConnected,
+        weth9,
+        dai,
+        tokenData
+      }}
+    >
       {children}
     </SwapTokenContext.Provider>
   );

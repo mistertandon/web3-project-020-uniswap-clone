@@ -4,13 +4,23 @@ import Link from "next/link";
 
 import images from "./../../assets";
 import { Modal, TokenList } from "./../index";
+
+import SwapTokenContext from "./../../Context/SwapContext";
 const NavBar = () => {
   const menuItems = [
     { name: "Swap", link: "/" },
     { name: "Tokens", link: "/" },
     { name: "Pools", link: "/" },
   ];
-
+  const {
+    connectWallet,
+    account: _accountAddress,
+    networkConnected,
+    weth9,
+    dai,
+    tokenData,
+  } = useContext(SwapTokenContext);
+  console.log("Navbar", _accountAddress, networkConnected, weth9, dai, tokenData);
   const [openModal, setOpenModal] = useState(false);
 
   const [openTokenBox, setOpenTokenBox] = useState(false);
@@ -72,11 +82,7 @@ const NavBar = () => {
         </div>
       </div>
       <div className="hidden md:flex bg-[#1e1e1e] flex-row justify-center items-center h-10 gap-x-2 w-fit border-white rounded-2xl">
-        <Image
-          src={images.search}
-          alt="search"
-          className="h-[20px] w-[20px]"
-        />
+        <Image src={images.search} alt="search" className="h-[20px] w-[20px]" />
         <input
           className="text-base text-white bg-transparent border-none outline-none color-[#CFF80B]"
           type="text"
@@ -85,13 +91,8 @@ const NavBar = () => {
       </div>
       <div className="flex flex-row items-start flex-end md:justify-between h-13 w-fit gap-x-4">
         <div className="flex-row items-start hidden md:flex gap-x-2">
-          <Image
-            src={images.ether}
-            alt="network"
-            width={30}
-            height={30}
-          />
-          <p className="pt-1 m-0">Network Name</p>
+          <Image src={images.ether} alt="network" width={30} height={30} />
+          <p className="pt-1 m-0">{networkConnected}</p>
         </div>
         <div className="pt-1">
           {account && (
@@ -99,23 +100,21 @@ const NavBar = () => {
               onClick={(event) => {
                 addressClickHandler(event);
               }}
+              title={_accountAddress}
             >
-              0x18d7efc9d5...
+              {`${_accountAddress.slice(0, 11)}...`}
             </button>
           )}
           {!account && (
             <button onClick={() => setOpenModal(true)}>Address</button>
           )}
           {openModal && (
-            <Modal
-              setOpenModal={setOpenModal}
-              connectWallet="Connect"
-            />
+            <Modal setOpenModal={setOpenModal} connectWallet={connectWallet} />
           )}
         </div>
         {openTokenBox && (
           <TokenList
-            tokenDate="hey"
+            tokenData={tokenData}
             tokenModalCoordinates={tokenModalCoordinates}
             setOpenTokenBox={setOpenTokenBox}
           />

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import images from "./../../assets";
 
-const WALLET_MENU = ["Metamask", "Coinbase", "Wallet", "Wallet Connection"];
+// const WALLET_MENU = ["Metamask", "Coinbase", "Wallet", "Wallet Connection"];
+const WALLET_MENU = ["Metamask"];
 const Modal = ({ setOpenModal, connectWallet }) => {
   return (
     <section className="absolute grid items-start grid-cols-12 gap-2 -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
