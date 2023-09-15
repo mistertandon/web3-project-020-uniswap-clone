@@ -168,3 +168,28 @@ export const connectingWithIWETHToken = async () => {
     console.log("An error occurred", error);
   }
 };
+
+/**
+ * This function is used to fetch Dai Token contract
+ *
+ * @param {} signerOrProvider
+ * @returns
+ */
+const DAI_ADDRESS = "0x6B175474E89094C44Da98b954EedeAC495271d0F";
+export const fetchDaiTokenContract = (signerOrProvider) =>
+  new ethers.Contract(DAI_ADDRESS, IWETHABI, signerOrProvider);
+
+// Connect with Dai Token contract
+export const connectingWithDaiToken = async () => {
+  try {
+    const web3modal = new Web3Modal();
+    const connection = await web3modal.connect();
+    const provider = new ethers.providers.Web3Provider(connection);
+    const signer = provider.getSigner();
+    const contract = fetchDaiTokenContract(signer);
+
+    return contract;
+  } catch (error) {
+    console.log("An error occurred", error);
+  }
+};
