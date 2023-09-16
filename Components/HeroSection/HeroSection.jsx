@@ -1,4 +1,4 @@
-import { useState, useReducer } from "react";
+import { useState, useReducer, useContext } from "react";
 import Image from "next/image";
 import images from "./../../assets";
 import {
@@ -7,6 +7,7 @@ import {
   TOGGLE_SEARCH_TOKEN_B,
 } from "./HeroSection.constant";
 
+import SwapTokenContext from "./../../Context/SwapContext";
 import { SearchToken, Token } from "./../index";
 
 const componentVisibility = (state, action) => {
@@ -51,13 +52,18 @@ const componentVisibility = (state, action) => {
   return _state;
 };
 
-const HeroSection = ({ accounts, tokenData }) => {
+const HeroSection = ({ tokenData }) => {
   const [visibilityStatus, dispatch] = useReducer(componentVisibility, {
     swapComponent: true,
     TokenComponent: false,
     tokenAComponent: false,
     tokenBComponent: false,
   });
+
+  const { connectWallet, account, singleSwapToken, ether, dai } =
+    useContext(SwapTokenContext);
+
+  console.log("account in Hero", account);
 
   const [tokenOne, setTokenOne] = useState({ name: "", image: "" });
 
@@ -80,10 +86,7 @@ const HeroSection = ({ accounts, tokenData }) => {
             />
           </div>
           <div className="col-start-4 col-end-9">
-            <input
-              type="text"
-              placeholder="0"
-            />
+            <input type="text" placeholder="0" />
             <button onClick={() => dispatch(TOGGLE_SEARCH_TOKEN_A)}>
               <Image
                 src={tokenOne.image || images.etherlogo}
@@ -92,15 +95,12 @@ const HeroSection = ({ accounts, tokenData }) => {
                 alt="ether"
               />
               {tokenOne.name || "ETH"}
-              <small>336k</small>
+              <small>{ether.slice(0, 7)}</small>
             </button>
           </div>
           {/* Token Two */}
           <div className="col-start-4 col-end-9">
-            <input
-              type="text"
-              placeholder="0"
-            />
+            <input type="text" placeholder="0" />
             <button onClick={() => dispatch(TOGGLE_SEARCH_TOKEN_B)}>
               <Image
                 src={tokenTwo.image || images.etherlogo}
@@ -109,15 +109,15 @@ const HeroSection = ({ accounts, tokenData }) => {
                 height={20}
               />
               {tokenTwo.name || "ETH"}
-              <small>336k</small>
+              <small>{dai.slice(0, 7)}</small>
             </button>
           </div>
           {/* Account */}
           <div className="col-start-4 col-end-9">
-            {accounts ? (
-              <button onClick={() => {}}>Connect wallet</button>
+            {account ? (
+              <button onClick={() => singleSwapToken()}>Swap</button>
             ) : (
-              <button onClick={() => {}}>-</button>
+              <button onClick={() => connectWallet()}>Connect wallet</button>
             )}
           </div>
         </>

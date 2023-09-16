@@ -35,10 +35,11 @@ export const checkIfWalletConnected = async () => {
 export const connectWallet = async () => {
   try {
     if (!window.ethereum) return console.log("Install metamask");
-    const accounts = await waindow.ethereum.request({
+    const accounts = await window.ethereum.request({
       method: "eth_requestAccounts",
     });
     const firstAccount = accounts[0];
+    console.log("firstAccount", firstAccount);
     return firstAccount;
   } catch (error) {
     console.log("An error occurred", error);
