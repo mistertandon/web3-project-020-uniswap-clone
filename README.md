@@ -67,3 +67,5 @@ npm i hardhat-tracer
 
  > npx hardhat node
  > npx hardhat run scripts/deploy.js --network localhost
+
+ Note: npm install @openzeppelin/contracts@3.4.2 must be used in order to get contract compiled correctly.
