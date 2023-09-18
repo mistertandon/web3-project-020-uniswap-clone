@@ -12,6 +12,7 @@ import SearchToken from "./SearchToken";
 import Toggle from "./Toggle";
 import { TokenList, TokenListPortal } from "./TokenList";
 import Token from "./Token";
+import TokenGrid from "./TokenGrid";
 
 export {
   HeroSection,
@@ -26,4 +27,5 @@ export {
   Token,
   TokenList,
   TokenListPortal,
+  TokenGrid,
 };

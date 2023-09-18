@@ -20,7 +20,14 @@ const NavBar = () => {
     dai,
     tokenData,
   } = useContext(SwapTokenContext);
-  console.log("Navbar", _accountAddress, networkConnected, weth9, dai, tokenData);
+  console.log(
+    "Navbar",
+    _accountAddress,
+    networkConnected,
+    weth9,
+    dai,
+    tokenData
+  );
   const [openModal, setOpenModal] = useState(false);
 
   const [openTokenBox, setOpenTokenBox] = useState(false);
@@ -73,7 +80,7 @@ const NavBar = () => {
               <Link
                 className="text-[#cff80b]"
                 key={`${name}_${idx}`}
-                href={{ pathname: `${name}`, query: `${link}` }}
+                href={{ pathname: `${name}` }}
               >
                 {name}
               </Link>
@@ -95,7 +102,7 @@ const NavBar = () => {
           <p className="pt-1 m-0">{networkConnected}</p>
         </div>
         <div className="pt-1">
-          {account && (
+          {_accountAddress && (
             <button
               onClick={(event) => {
                 addressClickHandler(event);
@@ -105,7 +112,7 @@ const NavBar = () => {
               {`${_accountAddress.slice(0, 11)}...`}
             </button>
           )}
-          {!account && (
+          {!_accountAddress && (
             <button onClick={() => setOpenModal(true)}>Address</button>
           )}
           {openModal && (
